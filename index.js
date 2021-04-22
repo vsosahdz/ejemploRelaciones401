@@ -8,13 +8,19 @@ const alumnoRoutes = require("./routes/alumno");
 const tareaRoutes = require("./routes/tarea");
 const grupoRoutes = require("./routes/grupo");
 const grupoAlumnoRoutes = require("./routes/grupoAlumno");
+const juegoRoutes = require('./routes/juego');
 
 const app = express();
 app.use(bodyParser.json());
+//Sirve para leer la información que envian los formularios
+app.use(bodyParser.urlencoded({extended:true}))
+
 app.use('/alumno',alumnoRoutes);
 app.use('/tarea',tareaRoutes);
 app.use('/grupo',grupoRoutes);
 app.use('/grupoAlumno',grupoAlumnoRoutes);
+app.use('/juego',juegoRoutes);
+
 
 
 sequelize.sync({})
