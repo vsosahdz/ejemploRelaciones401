@@ -1,4 +1,6 @@
 const Alumno = require("../util/database").models.alumno;
+const sequelize = require('../util/database');
+const Sequelize = require('sequelize');
 
 exports.postAgregarAlumno = (req, res)=>{
     console.log(req.body);
@@ -52,4 +54,34 @@ exports.postActualizarAlumno = (req,res)=>{
         console.log(error);
         res.send("Error en el proceso")
     })    
+}
+
+//Recomendada
+exports.getConsultarAlumno = (req,res)=>{
+    //Ejecutar una consulta en SQL desde el servidor de NodeJS
+    sequelize.query("SELECT nombre FROM alumno where id=3",{type:Sequelize.QueryTypes.SELECT})
+        .then(alumnos=>{
+            console.log(alumnos);
+            res.json({estado: "Correcto"});
+        })
+        .catch(err=>{
+            console.log(err);
+            res.json({estado: "Incorrecto"});
+        })
+}
+
+exports.getConsultarAlumno2 = (req,res)=>{
+    //Ejecutar una consulta en SQL desde el servidor de NodeJS
+    sequelize.query("SELECT id FROM alumno",{
+        model: Alumno,
+        mapToModel: true
+    })
+        .then(alumnos=>{
+            console.log(alumnos);
+            res.json({estado: "Correcto"});
+        })
+        .catch(err=>{
+            console.log(err);
+            res.json({estado: "Incorrecto"});
+        })
 }

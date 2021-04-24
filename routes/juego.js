@@ -5,5 +5,6 @@ const juegoController = require('../controllers/juego');
 
 router.get('/pruebaGET',juegoController.getPrueba);
 router.post('/pruebaPOST',juegoController.postPrueba);
+router.get('/descarga',juegoController.getDescarga);
 
 module.exports = router;

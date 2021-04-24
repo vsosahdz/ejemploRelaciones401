@@ -1,4 +1,5 @@
 const Alumno = require("../util/database").models.alumno;
+const path = require('path');
 
 exports.getPrueba = (req, res)=>{
     console.log(req.query);
@@ -20,4 +21,9 @@ exports.postPrueba = (req,res)=>{
                 res.send(alumnos);
         })
     //res.send('Ha llegado la informacion con exito')
+}
+
+exports.getDescarga = (req,res)=>{
+    //Colocar la ruta absoluta
+    res.download(path.join(__dirname,'..','public','resources','imagenprueba.jfif'));
 }
