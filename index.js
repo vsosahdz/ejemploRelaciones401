@@ -2,6 +2,8 @@
 const bodyParser = require('body-parser');
 //Importando la biblioteca express para la creación de servidores
 const express = require('express');
+//Biblioteca para utilizar el local storage
+//const {LocalStorage}= require('node-localstorage');
 //Traer un objeto sequelize
 const sequelize = require("./util/database");
 const alumnoRoutes = require("./routes/alumno");
@@ -21,7 +23,11 @@ app.use('/grupo',grupoRoutes);
 app.use('/grupoAlumno',grupoAlumnoRoutes);
 app.use('/juego',juegoRoutes);
 
+//Creamos una instancia del local storage
+//var localStorage = new LocalStorage('./scratch');
 
+//localStorage.setItem('Nombre','Usuario');
+//console.log(localStorage.getItem('Nombre'));
 
 sequelize.sync({})
     .then(resultado=>{

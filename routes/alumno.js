@@ -7,6 +7,7 @@ router.post('/eliminarAlumno',alumnoController.postEliminarAlumno);
 router.post('/actualizarAlumno',alumnoController.postActualizarAlumno);
 router.get('/consultarAlumno',alumnoController.getConsultarAlumno);
 router.get('/consultarAlumno2',alumnoController.getConsultarAlumno2);
+router.get('/graficarAlumno',alumnoController.getGraficarAlumno);
 
 
 module.exports = router;

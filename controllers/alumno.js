@@ -1,12 +1,17 @@
 const Alumno = require("../util/database").models.alumno;
 const sequelize = require('../util/database');
 const Sequelize = require('sequelize');
+const path = require('path');
+const {LocalStorage}= require('node-localstorage');
+var localStorage = new LocalStorage('./scratch');
 
 exports.postAgregarAlumno = (req, res)=>{
+    
     console.log(req.body);
     Alumno.create(req.body)
         .then(resultado=>{
             console.log("Registro exitoso"); //Servidor
+            localStorage.setItem('nombre',req.body.nombre);
             res.send("Registro exitoso") //Cliente
         })
         .catch(error=>{
@@ -20,7 +25,8 @@ exports.getAlumnos = (req,res)=>{
     Alumno.findAll()
         .then(alumnos=>{
             console.log("Usuario:", alumnos);
-            res.send(alumnos)
+
+            res.send('<p>'+alumnos+'</p>'+'<p>'+localStorage.getItem('nombre')+'</p>')
         })
 }
 
@@ -84,4 +90,9 @@ exports.getConsultarAlumno2 = (req,res)=>{
             console.log(err);
             res.json({estado: "Incorrecto"});
         })
+}
+
+exports.getGraficarAlumno = (req,res)=>{
+    //res.render
+    res.sendFile(path.join(__dirname,'..','views','ejemplochartjs.html'));
 }
