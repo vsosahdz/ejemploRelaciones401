@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "node-localstorage": "^2.1.6",
     "sequelize": "^6.6.2",
-    "tedious": "^11.0.7"
+    "tedious": "^11.0.7",
+    "cors": "^2.8.5"
   }
 }
