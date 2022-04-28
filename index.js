@@ -1,5 +1,3 @@
-//Biblioteca manejo de JSON
-const bodyParser = require('body-parser');
 //Importando la biblioteca express para la creación de servidores
 const express = require('express');
 //Biblioteca para utilizar el local storage
@@ -13,9 +11,11 @@ const grupoAlumnoRoutes = require("./routes/grupoAlumno");
 const juegoRoutes = require('./routes/juego');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 //Sirve para leer la información que envian los formularios
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}))
+//Comunicar dos aplicaciones una en back y otra en front
+app.user(cors())
 
 app.use('/alumno',alumnoRoutes);
 app.use('/tarea',tareaRoutes);
