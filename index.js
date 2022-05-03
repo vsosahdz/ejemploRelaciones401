@@ -15,7 +15,7 @@ app.use(express.json());
 //Sirve para leer la información que envian los formularios
 app.use(express.urlencoded({extended:true}))
 //Comunicar dos aplicaciones una en back y otra en front
-app.user(cors())
+app.use(cors())
 
 app.use('/alumno',alumnoRoutes);
 app.use('/tarea',tareaRoutes);
